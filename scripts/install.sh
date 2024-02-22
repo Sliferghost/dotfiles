@@ -23,6 +23,9 @@ cp ./font/*.ttf ~/Library/Fonts/
 rm -rf font
 rm JetBrainsMono.zip
 
+# Install TMUX plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Stow the dotfiles
 cd ~/dotfiles
 stow .
