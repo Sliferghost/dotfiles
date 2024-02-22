@@ -13,7 +13,16 @@ fi
 brew update && brew upgrade
 
 # Install packages
-brew install bat eza fzf raycast neovim ripgrep sesh stow tmux tree-sitter zoxide
+brew install bat eza fzf raycast neovim ripgrep joshmedeski/sesh/sesh stow tmux tree-sitter zoxide
+
+# Configured fonts
+curl -JLO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+mkdir font
+unzip JetBrainsMono.zip -d font
+cp ./font/*.ttf ~/Library/Fonts/
+rm -rf font
+rm JetBrainsMono.zip
 
 # Stow the dotfiles
-stow ~/dotfiles
+cd ~/dotfiles
+stow .
