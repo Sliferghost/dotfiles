@@ -140,6 +140,9 @@ alias gc="git commit -m"
 # Sesh
 alias s="sesh connect \$(sesh list | fzf)"
 
+# custom
+[ -f ~/.zshrc-custom ] && source ~/.zshrc-custom
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

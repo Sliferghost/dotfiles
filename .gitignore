@@ -1,3 +1,2 @@
-.git
-scripts
 .config/tmux/plugins
+.zshrc-custom
