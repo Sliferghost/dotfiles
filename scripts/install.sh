@@ -29,8 +29,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # TODO: Disable C-Space Mac Hotkey
 # https://mattkirwancom.wordpress.com/2020/04/30/use-ctrl-space-tmux-prefix-keybind-macos/
 
-# TODO: Separate zshrc file for work and private machine(s)
-
 # Stow the dotfiles
 cd ~/dotfiles
 stow .
