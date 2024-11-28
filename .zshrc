@@ -110,9 +110,6 @@ fi
 
 alias n="nvim"
 alias nconfig="cd ~/.config/nvim/ && n ."
-alias t="tmux"
-alias tn="tmux new -s"
-alias tconfig="cd ~/.config/tmux/ && n tmux.conf"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias zshreload="source ~/.zshrc"
 
@@ -124,9 +121,6 @@ alias tree="eza --tree"
 alias cat="bat"
 alias cd="z"
 
-# ngrok
-alias ng="ngrok http --domain=needed-usually-trout.ngrok-free.app"
-
 # git aliases
 alias g="git"
 alias ga="git add"
@@ -136,9 +130,6 @@ alias gb="git branch"
 alias gbd="git branch -d"
 alias gbdm="git branch --merged main | grep -v '^[ *]*main$' | xargs git branch -d"
 alias gc="git commit -m"
-
-# Sesh
-alias s="sesh connect \$(sesh list | fzf)"
 
 # custom
 [ -f ~/.zshrc-custom ] && source ~/.zshrc-custom
