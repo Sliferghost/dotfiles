@@ -89,6 +89,11 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- Execute code
+vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>', { desc = 'E[x]ecute current file' })
+vim.keymap.set('n', '<space>x', ':.lua<CR>', { desc = 'E[x]ecute line' })
+vim.keymap.set('v', '<space>x', ':lua<CR>', { desc = 'E[x]ecute selection' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -125,6 +130,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Configure terminal
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = '*',
+  command = 'startinsert',
+})
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+})
+vim.keymap.set('n', '<space>st', function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, 15)
+end, { desc = '[S]mall [T]erminal' })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -243,7 +267,6 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>T', desc = 'Open [T]erminal' },
       },
     },
   },
@@ -887,6 +910,7 @@ require('lazy').setup({
 
   require 'custom.plugins.autopairs',
   require 'custom.plugins.lint',
+  require 'custom.plugins.terminal',
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
