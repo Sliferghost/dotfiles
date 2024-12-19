@@ -94,14 +94,6 @@ vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>', { desc = 'E[x]ecute 
 vim.keymap.set('n', '<space>x', ':.lua<CR>', { desc = 'E[x]ecute line' })
 vim.keymap.set('v', '<space>x', ':lua<CR>', { desc = 'E[x]ecute selection' })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -131,24 +123,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Configure terminal
-vim.api.nvim_create_autocmd('TermOpen', {
-  pattern = '*',
-  command = 'startinsert',
-})
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-  end,
-})
-vim.keymap.set('n', '<space>st', function()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  vim.cmd.wincmd 'J'
-  vim.api.nvim_win_set_height(0, 15)
-end, { desc = '[S]mall [T]erminal' })
+require 'custom.plugins.terminal'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
