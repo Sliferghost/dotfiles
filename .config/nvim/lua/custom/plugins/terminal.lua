@@ -80,7 +80,7 @@ end
 
 vim.keymap.set('n', '<space>t1', function()
   toggle_terminal(1)
-end)
+end, { desc = 'Toggle [T]erminal 1' })
 vim.keymap.set('n', '<space>t2', function()
   toggle_terminal(2)
-end)
+end, { desc = 'Toggle [T]erminal 2' })
