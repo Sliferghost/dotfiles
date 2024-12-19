@@ -7,10 +7,6 @@
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 vim.api.nvim_create_autocmd('TermOpen', {
-  pattern = '*',
-  command = 'startinsert',
-})
-vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
   callback = function()
     vim.opt.number = false
@@ -78,9 +74,9 @@ local toggle_terminal = function(terminal)
   end
 end
 
-vim.keymap.set('n', '<space>t1', function()
+vim.keymap.set({ 'n', 't' }, '<space>t1', function()
   toggle_terminal(1)
 end, { desc = 'Toggle [T]erminal 1' })
-vim.keymap.set('n', '<space>t2', function()
+vim.keymap.set({ 'n', 't' }, '<space>t2', function()
   toggle_terminal(2)
 end, { desc = 'Toggle [T]erminal 2' })
