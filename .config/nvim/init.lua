@@ -544,8 +544,11 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        ts_ls = {},
+
+        tailwindcss = {
+          settings = {},
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -639,7 +642,6 @@ require('lazy').setup({
       },
     },
   },
-
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -675,6 +677,8 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      -- Display colors in cmp for tailwindcss classes
+      'roobert/tailwindcss-colorizer-cmp.nvim',
     },
     config = function()
       -- See `:help cmp`
@@ -751,6 +755,9 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+        },
+        formatting = {
+          format = require('tailwindcss-colorizer-cmp').formatter,
         },
       }
     end,
