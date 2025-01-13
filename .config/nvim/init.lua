@@ -892,6 +892,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   require 'custom.plugins.autopairs',
+  require 'custom.plugins.autotag',
   require 'custom.plugins.lint',
   require 'custom.plugins.lazygit',
 
