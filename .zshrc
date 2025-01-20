@@ -153,7 +153,6 @@ eval "$(zoxide init zsh)"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
 # pnpm
 export PNPM_HOME="/Users/jaapoudejans/Library/pnpm"
 case ":$PATH:" in
@@ -161,3 +160,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Lazygit change config directory to home
+export XDG_CONFIG_HOME="$HOME/.config"
