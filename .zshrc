@@ -131,6 +131,10 @@ alias gbd="git branch -d"
 alias gbdm="git branch --merged main | grep -v '^[ *]*main$' | xargs git branch -d"
 alias gc="git commit -m"
 
+# Colima
+alias docker-start="colima start --cpu 4 --memory 8 --disk 10"
+alias docker-stop="colima stop"
+
 # custom
 [ -f ~/.zshrc-custom ] && source ~/.zshrc-custom
 
@@ -161,3 +165,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
