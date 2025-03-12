@@ -123,8 +123,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-require 'custom.plugins.terminal'
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -885,6 +883,7 @@ require('lazy').setup({
 
   require 'custom.plugins.autopairs',
   require 'custom.plugins.lint',
+  require 'custom.plugins.lazygit',
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
