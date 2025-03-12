@@ -534,7 +534,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        gopls = {},
+        -- gopls = {},
 
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -542,8 +542,11 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        ts_ls = {},
+
+        tailwindcss = {
+          settings = {},
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -574,8 +577,9 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Lua formatter
-        'gopls', -- Go language server
-        'golangci-lint', -- Go linter
+        'prettierd', -- Typescript formatter
+        -- 'gopls', -- Go language server
+        -- 'golangci-lint', -- Go linter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -628,16 +632,17 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        go = { 'gofmt' },
+        -- go = { 'gofmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
-
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -673,6 +678,8 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      -- Display colors in cmp for tailwindcss classes
+      'roobert/tailwindcss-colorizer-cmp.nvim',
     },
     config = function()
       -- See `:help cmp`
@@ -749,6 +756,9 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+        },
+        formatting = {
+          format = require('tailwindcss-colorizer-cmp').formatter,
         },
       }
     end,
@@ -882,6 +892,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   require 'custom.plugins.autopairs',
+  require 'custom.plugins.autotag',
   require 'custom.plugins.lint',
   require 'custom.plugins.lazygit',
 
