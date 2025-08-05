@@ -4,12 +4,6 @@ return {
         priority = 1000,
         lazy = false,
         opts = {
-            explorer = {
-                enabled = true,
-                layout = {
-                    cycle = false,
-                }
-            },
             quickfile = {
                 enabled = true,
             },
@@ -142,7 +136,6 @@ return {
         keys = {
             { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
             { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Logs" },
-            { "<leader>es", function() Snacks.explorer() end, desc = "Open Snacks Explorer" },
             { "<leader>rF", function() Snacks.rename.rename_file() end, desc = "Fast Rename Current File" },
             { "<leader>bx", function() Snacks.bufdelete() end, desc = "Delete or Close Buffer (Confirm)"},
 
