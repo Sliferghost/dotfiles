@@ -72,6 +72,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+FPATH="~/.zsh/completions:${FPATH}"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -131,15 +132,18 @@ alias gbd="git branch -d"
 alias gbdm="git branch --merged main | grep -v '^[ *]*main$' | xargs git branch -d"
 alias gc="git commit -m"
 
-# Colima
-alias docker-start="colima start --cpu 4 --memory 8 --disk 10"
-alias docker-stop="colima stop"
-
 # custom
 [ -f ~/.zshrc-custom ] && source ~/.zshrc-custom
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function fcd() {
+  target=$(fzf)
+  [ -z "$target" ] && return  # Exit if nothing is selected
+  [ -f "$target" ] && target=$(dirname "$target")  # Convert file to directory
+  cd "$target"
+}
 
 # bun completions
 [ -s "/Users/jaapoudejans/.bun/_bun" ] && source "/Users/jaapoudejans/.bun/_bun"
@@ -171,3 +175,11 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Lazygit change config directory to home
 export XDG_CONFIG_HOME="$HOME/.config"
+
+
+# Google Cloud SDK
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+
+# Ikea
+source "/Users/jaapoudejans/Projects/Ikea/.zshrc"
