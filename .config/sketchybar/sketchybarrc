@@ -18,7 +18,7 @@ FONT="Hack Nerd Font"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=40 blur_radius=0 color="$TRANSPARENT"
+sketchybar --bar position=top height=40 blur_radius=0 color="$TRANSPARENT" display=all
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
