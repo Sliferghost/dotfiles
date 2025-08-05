@@ -8,6 +8,16 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:$PATH
 
+# Add Homebrew's completions to FPATH
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+# Initialize the completion system
+# IMPORTANT: This must be done *after* FPATH is modified
+autoload -Uz compinit
+compinit
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
