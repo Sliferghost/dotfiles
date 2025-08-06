@@ -8,7 +8,6 @@ return {
 				go = {
 					"goimports",
 					"golines",
-					"gotests",
 					"gofumpt",
 				},
 			},

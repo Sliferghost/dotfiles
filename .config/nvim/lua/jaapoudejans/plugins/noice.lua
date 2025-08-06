@@ -13,6 +13,10 @@ return {
 		"rcarriga/nvim-notify",
 	},
 	config = function()
+		require("notify").setup({
+			background_colour = "#000000",
+			merge_duplicates = true,
+		})
 		require("noice").setup({
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -20,6 +24,23 @@ return {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+				},
+			},
+			views = {
+				cmdline_popup = {
+					position = {
+						row = "50%",
+						col = "50%",
+					},
+					size = {
+						width = "40%",
+						min_width = 20,
+						height = "auto",
+					},
+					win_options = {
+						-- This is a Neovim option that helps with positioning
+						winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+					},
 				},
 			},
 			-- you can enable a preset for easier configuration

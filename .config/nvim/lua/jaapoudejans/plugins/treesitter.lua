@@ -19,6 +19,7 @@ return {
 					"gomod",
 					"markdown",
 					"markdown_inline",
+					"regex",
 					"bash",
 					"lua",
 					"vim",
