@@ -84,9 +84,6 @@ sketchybar --add event aerospace_workspace_change
 ##### Adding Left Items #####
 source "$ITEM_DIR/space.sh"
 
-sketchybar --add bracket workspaces space.1 space.2 space.3 space.4 space.8 space.9 space.B space.F space.M space.N space.T \
-           --set workspaces background.color="$PURE_BLACK" \
-
 source "$ITEM_DIR/front_app.sh"
 
 # We add some regular items to the left side of the bar, where

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define custom labels/icons for your workspaces
-SPACE_ICONS=("1" "2" "3" "4" "8" "9" "B" "F" "M" "N" "T")
+SPACE_ICONS=("B" "W" "F" "T" "I" "S" "M" "O")
 # background.color=0x44ffffff \
 
 for i in "${!SPACE_ICONS[@]}"; do
@@ -19,11 +19,15 @@ for i in "${!SPACE_ICONS[@]}"; do
     background.padding_right=5
     background.height=20
     drawing=on
-    script="$CONFIG_DIR/plugins/aerospace.sh $id"
+    script="$CONFIG_DIR/plugins/aerospace.sh"
     click_script="aerospace workspace $id"
   )
 
   sketchybar --add item space.$id left \
              --set space.$id "${space_item[@]}" \
-             --subscribe space.$id aerospace_workspace_change
+             --subscribe space.$id aerospace_workspace_change 
+
 done
+
+  sketchybar --add bracket workspaces space.B space.W space.F space.T space.I space.S space.M space.O \
+             --set workspaces background.color="$PURE_BLACK"
