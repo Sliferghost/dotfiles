@@ -40,7 +40,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.backspace = {"start", "eol", "indent"}
+vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.iskeyword:append("-")
 vim.opt.mouse = "a"
 vim.opt.clipboard:append("unnamedplus")

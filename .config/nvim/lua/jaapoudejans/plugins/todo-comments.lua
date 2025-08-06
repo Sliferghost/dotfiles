@@ -1,11 +1,11 @@
 return {
-    "folke/todo-comments.nvim",
-    event = {"BufReadPre", "BufNewFile"},
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-        local todo_comments = require("todo-comments")
+	"folke/todo-comments.nvim",
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = { "nvim-lua/plenary.nvim" },
+	config = function()
+		local todo_comments = require("todo-comments")
 
-        todo_comments.setup({
+		todo_comments.setup({
 			keywords = {
 				FIX = {
 					icon = " ", -- icon used for the sign, and in search results
@@ -22,12 +22,12 @@ return {
 			},
 		})
 
-        vim.keymap.set("n", "]t", function()
+		vim.keymap.set("n", "]t", function()
 			todo_comments.jump_next()
 		end, { desc = "Next todo comment" })
 
 		vim.keymap.set("n", "[t", function()
 			todo_comments.jump_prev()
 		end, { desc = "Previous todo comment" })
-    end
+	end,
 }

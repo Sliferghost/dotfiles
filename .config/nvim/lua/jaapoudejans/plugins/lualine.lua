@@ -1,14 +1,14 @@
 return {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-        local lualine = require("lualine")
-        local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+	"nvim-lualine/lualine.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	config = function()
+		local lualine = require("lualine")
+		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
 		local colors = {
-            color0 = "#092236",
-            color1 = "#ff5874",
-            color2 = "#c3ccdc",
+			color0 = "#092236",
+			color1 = "#ff5874",
+			color2 = "#c3ccdc",
 			color3 = "#1c1e26",
 			color6 = "#a1aab8",
 			color7 = "#828697",
@@ -40,33 +40,32 @@ return {
 			},
 		}
 
-        local mode = {
-            'mode',
-            fmt = function(str)
-                -- return ' ' 
-                -- displays only the first character of the mode
-                return ' ' .. str
-            end,
-        }
+		local mode = {
+			"mode",
+			fmt = function(str)
+				-- return ' '
+				-- displays only the first character of the mode
+				return " " .. str
+			end,
+		}
 
-        local branch = {'branch', icon = {'', color={fg='#A6D4DE'}}, '|'}
-
+		local branch = { "branch", icon = { "", color = { fg = "#A6D4DE" } }, "|" }
 
 		lualine.setup({
-            icons_enabled = true,
+			icons_enabled = true,
 			options = {
 				theme = my_lualine_theme,
 				component_separators = { left = "|", right = "|" },
 				section_separators = { left = "|", right = "" },
 			},
 			sections = {
-                lualine_a = { mode },
-                lualine_b = { branch },
-                lualine_c = {},
+				lualine_a = { mode },
+				lualine_b = { branch },
+				lualine_c = {},
 				lualine_x = {
 					{
-                        -- require("noice").api.statusline.mode.get,
-                        -- cond = require("noice").api.statusline.mode.has,
+						-- require("noice").api.statusline.mode.get,
+						-- cond = require("noice").api.statusline.mode.has,
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
 						color = { fg = "#ff9e64" },
@@ -77,5 +76,5 @@ return {
 				},
 			},
 		})
-    end
+	end,
 }
