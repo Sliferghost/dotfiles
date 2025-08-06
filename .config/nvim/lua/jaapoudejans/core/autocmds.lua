@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>rn", vim.lsp.buf.rename, "Rename all references")
 		map("<leader>cf", vim.lsp.buf.format, "Format")
 		map("<leader>gd", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
+		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
 
 		local function client_supports_method(client, method, bufnr)
 			if vim.fn.has("nvim-0.11") == 1 then

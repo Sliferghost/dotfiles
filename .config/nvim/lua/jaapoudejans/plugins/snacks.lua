@@ -107,101 +107,63 @@ return {
 			--     },
 			--     img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments","Archives/All-Vault-Images/", "~/Library", "~/Downloads" },
 			-- },
-			dashboard = {
-				enabled = true,
-				sections = {
-					{ section = "header" },
-					{
-						pane = 2,
-						section = "terminal",
-						cmd = "pokemon-colorscripts -n mewtwo --no-title",
-						height = 5,
-						padding = 1,
-					},
-					{ section = "keys", gap = 1, padding = 1 },
-					{
-						pane = 2,
-						icon = " ",
-						title = "Recent Files",
-						section = "recent_files",
-						indent = 2,
-						padding = 1,
-					},
-					{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-					{
-						pane = 2,
-						icon = " ",
-						title = "Git Status",
-						section = "terminal",
-						enabled = function()
-							return Snacks.git.get_root() ~= nil
-						end,
-						cmd = "git status --short --branch --renames",
-						height = 5,
-						padding = 1,
-						ttl = 5 * 60,
-						indent = 3,
-					},
-					{ section = "startup" },
-				},
-			},
 		},
 		keys = {
 			{
 				"<leader>lg",
 				function()
-					Snacks.lazygit()
+					require("snacks").lazygit()
 				end,
 				desc = "Lazygit",
 			},
 			{
 				"<leader>gl",
 				function()
-					Snacks.lazygit.log()
+					require("snacks").lazygit.log()
 				end,
 				desc = "Lazygit Logs",
 			},
 			{
 				"<leader>rF",
 				function()
-					Snacks.rename.rename_file()
+					require("snacks").rename.rename_file()
 				end,
 				desc = "Fast Rename Current File",
 			},
 			{
 				"<leader>bx",
 				function()
-					Snacks.bufdelete()
+					require("snacks").bufdelete()
 				end,
 				desc = "Delete or Close Buffer (Confirm)",
 			},
 
-			-- Snacks Picker
+			-- require("snacks") Picker
 			{
 				"<leader>pf",
 				function()
-					Snacks.picker.files()
+					require("snacks").picker.files()
 				end,
 				desc = "Find Files",
 			},
 			{
 				"<leader>pc",
 				function()
-					Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+					require("snacks").picker.files({ cwd = vim.fn.stdpath("config") })
 				end,
 				desc = "Find Config File",
 			},
 			{
 				"<leader>ps",
 				function()
-					Snacks.picker.grep()
+					require("snacks").picker.grep()
 				end,
 				desc = "Grep Word",
 			},
 			{
 				"<leader>pws",
 				function()
-					Snacks.picker.grep_word()
+					require("snacks").picker.grep_word()
 				end,
 				desc = "Search Visual selection or Word",
 				mode = { "n", "x" },
@@ -209,7 +171,7 @@ return {
 			{
 				"<leader>pk",
 				function()
-					Snacks.picker.keymaps({ layout = "ivy" })
+					require("snacks").picker.keymaps({ layout = "ivy" })
 				end,
 				desc = "Search Keymaps",
 			},
@@ -217,21 +179,21 @@ return {
 			{
 				"<leader>gbr",
 				function()
-					Snacks.picker.git_branches({ layout = "select" })
+					require("snacks").picker.git_branches({ layout = "select" })
 				end,
 				desc = "Switch Git Branches",
 			},
 			{
 				"<leader>th",
 				function()
-					Snacks.picker.colorschemes({ layout = "ivy" })
+					require("snacks").picker.colorschemes({ layout = "ivy" })
 				end,
 				desc = "Switch Color Schemes",
 			},
 			{
 				"<leader>ph",
 				function()
-					Snacks.picker.help()
+					require("snacks").picker.help()
 				end,
 				desc = "Help Pages",
 			},
@@ -245,14 +207,14 @@ return {
 			{
 				"<leader>pt",
 				function()
-					Snacks.picker.todo_comments()
+					require("snacks").picker.todo_comments()
 				end,
 				desc = "Todo",
 			},
 			{
 				"<leader>pT",
 				function()
-					Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+					require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
 				end,
 				desc = "Todo/Fix/Fixme",
 			},
