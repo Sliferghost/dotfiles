@@ -23,6 +23,7 @@ vim.opt.inccommand = "split"
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.signcolumn = "yes"
+vim.opt.cmdheight = 0
 
 vim.opt.backup = false
 vim.opt.writebackup = false
