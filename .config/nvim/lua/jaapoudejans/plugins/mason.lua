@@ -20,13 +20,13 @@ return {
 			},
 		})
 
-		-- mason_lspconfig.setup({
-		--     automatic_enable = false,
-		--     ensure_installed = {
-		--         "lua_ls",
-		--         "gopls",
-		--     },
-		-- })
+		mason_lspconfig.setup({
+			automatic_enable = false,
+			ensure_installed = {
+				"lua_ls",
+				-- "gopls",
+			},
+		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
