@@ -24,17 +24,17 @@ return {
 			automatic_enable = false,
 			ensure_installed = {
 				"lua_ls",
-				-- "gopls",
+				"gopls",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"stylua",
-				-- 'gofumpt',
-				-- 'golines',
-				-- 'gomodifytags',
-				-- 'gotests',
+				"goimports",
+				"golines",
+				"gotests",
+				"gofumpt",
 			},
 		})
 	end,

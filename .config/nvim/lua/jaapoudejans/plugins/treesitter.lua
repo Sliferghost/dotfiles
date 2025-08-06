@@ -16,6 +16,7 @@ return {
 				},
 				ensure_installed = {
 					"go",
+					"gomod",
 					"markdown",
 					"markdown_inline",
 					"bash",
