@@ -9,13 +9,13 @@ return {
 	-- ft = { "markdown", "norg", "rmd", "org" },
 	init = function()
 		-- Define colors
-		local color1_bg = "#ff757f"
-		local color2_bg = "#4fd6be"
-		local color3_bg = "#7dcfff"
-		local color4_bg = "#ff9e64"
-		local color5_bg = "#7aa2f7"
-		local color6_bg = "#c0caf5"
-		local color_fg = "#1F2335"
+		-- local color1_bg = "#ff757f"
+		-- local color2_bg = "#4fd6be"
+		-- local color3_bg = "#7dcfff"
+		-- local color4_bg = "#ff9e64"
+		-- local color5_bg = "#7aa2f7"
+		-- local color6_bg = "#c0caf5"
+		-- local color_fg = "#1F2335"
 
 		-- Heading background
 		-- vim.cmd(string.format([[highlight Headline1Bg guifg=%s guibg=%s gui=bold]], color_fg, color1_bg))
