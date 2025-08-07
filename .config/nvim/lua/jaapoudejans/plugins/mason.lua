@@ -36,6 +36,7 @@ return {
 				"golines",
 				"gotests",
 				"gofumpt",
+				"csharpier",
 			},
 		})
 	end,
