@@ -46,3 +46,4 @@ vim.opt.mouse = "a"
 vim.opt.clipboard:append("unnamedplus")
 
 vim.g.editorconfig = true
+
