@@ -32,6 +32,7 @@ return {
 					"gofumpt",
 				},
 				cs = { "csharpier" },
+				xml = { "xmlformatter" },
 			},
 			format_on_save = {
 				timeout_ms = 500,

@@ -25,6 +25,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"gopls",
+				"csharp_ls",
 			},
 		})
 
@@ -37,6 +38,7 @@ return {
 				"gotests",
 				"gofumpt",
 				"csharpier",
+				"xmlformatter",
 			},
 		})
 	end,
