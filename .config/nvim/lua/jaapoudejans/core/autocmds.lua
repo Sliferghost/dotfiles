@@ -26,15 +26,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gt", vim.lsp.buf.type_definition, "Show type definitions")
 		map("]d", function()
 			vim.diagnostic.jump({ count = 1 })
-		end, "Go to next diagnostic")
+		end, "LSP: Go to next diagnostic")
 		map("[d", function()
 			vim.diagnostic.jump({ count = -1 })
-		end, "Go to previous diagnostic")
+		end, "LSP: Go to previous diagnostic")
 		map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 		map("<leader>rn", vim.lsp.buf.rename, "Rename all references")
 		map("<leader>cf", vim.lsp.buf.format, "Format")
 		map("<leader>gd", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
-		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "Signature Documentation" })
+		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "LSP: Signature Documentation" })
+		vim.keymap.set(
+			"n",
+			"<leader>dd",
+			":Telescope diagnostics bufnr=0<CR>",
+			{ desc = "LSP: Show all diagnostics in current file" }
+		)
+		vim.keymap.set("n", "<leader>dD", ":Telescope diagnostics<CR>", { desc = "LSP: Show all diagnostics" })
 
 		local function client_supports_method(client, method, bufnr)
 			if vim.fn.has("nvim-0.11") == 1 then
