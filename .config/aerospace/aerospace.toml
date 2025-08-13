@@ -33,8 +33,8 @@ default-root-container-orientation = 'auto'
 # on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center']
 
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE'
+exec-on-workspace-change = [
+    '/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
@@ -222,6 +222,16 @@ outer.top = [{ monitor."Built-in Retina Display" = 10 }, 40]
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+[workspace-to-monitor-force-assignment]
+    B = 'main'
+    W = ['secondary', 'main']
+    F = 'main'
+    T = 'main'
+    I = 'main'
+    S = ['secondary', 'main']
+    M = ['secondary', 'main']
+    O = ['secondary', 'main']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
