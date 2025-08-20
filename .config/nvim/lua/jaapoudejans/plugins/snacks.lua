@@ -159,6 +159,13 @@ return {
 				desc = "Find Files",
 			},
 			{
+				"<leader>pb",
+				function()
+					require("snacks").picker.buffers()
+				end,
+				desc = "Find Buffers",
+			},
+			{
 				"<leader>pc",
 				function()
 					require("snacks").picker.files({ cwd = vim.fn.stdpath("config") })
