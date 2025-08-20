@@ -230,7 +230,7 @@ outer.top = [{ monitor."Built-in Retina Display" = 10 }, 40]
     T = 'main'
     I = 'main'
     S = ['secondary', 'main']
-    M = ['secondary', 'main']
+    M = ['main', 'secondary'] # Main first in case of calls
     O = ['secondary', 'main']
 
 [[on-window-detected]]
