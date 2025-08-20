@@ -1,3 +1,5 @@
+custom-shader = shaders/cursor_smear.glsl
+
 # Styling
 config-file = themes/rosepine
 background = #000000
@@ -6,6 +8,7 @@ background-blur-radius = 23
 
 font-family = JetBrainsMonoNL Nerd Font
 font-size = 16
+cursor-color = #ffffff
 cursor-style = block
 cursor-style-blink = false
 cursor-invert-fg-bg = true
@@ -21,7 +24,7 @@ window-padding-y = 10
 window-padding-balance = false
 
 auto-update = check
-auto-update-channel = stable
+auto-update-channel = tip
 
 shell-integration-features = no-cursor
 copy-on-select = clipboard
