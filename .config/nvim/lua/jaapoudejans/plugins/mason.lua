@@ -27,6 +27,7 @@ return {
 				"gopls",
 				"typescript-language-server",
 				"tailwindcss-language-server",
+				"jsonls",
 			},
 		})
 
