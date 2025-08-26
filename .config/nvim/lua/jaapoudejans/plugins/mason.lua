@@ -31,11 +31,14 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"stylua",
+
 				"golangci-lint",
 				"goimports",
 				"golines",
 				"gotests",
 				"gofumpt",
+
+				"biome",
 			},
 		})
 	end,
