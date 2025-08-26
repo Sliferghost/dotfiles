@@ -29,7 +29,6 @@ return {
 					"vimdoc",
 					"gitignore",
 					"xml",
-					"c_sharp",
 				},
 				incremental_selection = {
 					enable = true,

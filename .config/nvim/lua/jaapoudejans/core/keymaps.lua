@@ -8,8 +8,8 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move selected lines u
 
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
-vim.keymap.set("n", "{", "{zz", { desc = "Previous paragraph (centered)" })
-vim.keymap.set("n", "}", "}zz", { desc = "Next paragraph (centered)" })
+vim.keymap.set("n", "<C-[>", "{zz", { desc = "Previous paragraph (centered)" })
+vim.keymap.set("n", "<C-]>", "}zz", { desc = "Next paragraph (centered)" })
 
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
