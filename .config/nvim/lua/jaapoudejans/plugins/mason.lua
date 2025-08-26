@@ -21,10 +21,12 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			automatic_enable = false,
+			automatic_enable = true,
 			ensure_installed = {
 				"lua_ls",
 				"gopls",
+				"typescript-language-server",
+				"tailwindcss-language-server",
 			},
 		})
 
