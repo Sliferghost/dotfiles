@@ -29,6 +29,13 @@ return {
 					"vimdoc",
 					"gitignore",
 					"xml",
+
+					"json",
+					"html",
+					"css",
+					"typescript",
+					"javascript",
+					"tsx",
 				},
 				incremental_selection = {
 					enable = true,
