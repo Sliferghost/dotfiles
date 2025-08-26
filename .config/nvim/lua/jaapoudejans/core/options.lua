@@ -47,3 +47,5 @@ vim.opt.clipboard:append("unnamedplus")
 
 vim.g.editorconfig = true
 
+-- Used for auto restoring highlighting after restoring a session
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

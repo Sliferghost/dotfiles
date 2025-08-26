@@ -29,6 +29,7 @@ return {
 					"vimdoc",
 					"gitignore",
 					"xml",
+					"diff",
 
 					"json",
 					"html",
