@@ -1,0 +1,14 @@
+# Main settings
+mode=drun
+width=750
+height=400
+prompt=
+insensitive=true
+always_parse_args=true
+
+# Appearance
+columns=1
+hide_scroll=true
+
+# Terminal to use
+term=ghostty
