@@ -24,22 +24,14 @@ return {
 			automatic_enable = true,
 			ensure_installed = {
 				"lua_ls",
-				"gopls",
 				"ts_ls",
 				"tailwindcss",
-				"jsonls",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"stylua",
-
-				"golangci-lint",
-				"goimports",
-				"golines",
-				"gotests",
-				"gofumpt",
 
 				"biome",
 			},

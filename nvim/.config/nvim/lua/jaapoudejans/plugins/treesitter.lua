@@ -15,11 +15,6 @@ return {
 					enable = true,
 				},
 				ensure_installed = {
-					"go",
-					"gomod",
-					"gosum",
-					"gotmpl",
-					"gowork",
 					"markdown",
 					"markdown_inline",
 					"regex",

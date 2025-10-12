@@ -5,12 +5,6 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				-- Backend development
-				go = {
-					"goimports",
-					"golines",
-					"gofumpt",
-				},
 				-- Web development
 				javascript = { "biome-check" },
 				typescript = { "biome-check" },
