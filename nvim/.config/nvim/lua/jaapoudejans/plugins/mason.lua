@@ -34,6 +34,8 @@ return {
 				"stylua",
 
 				"biome",
+
+				"ktlint",
 			},
 		})
 	end,
