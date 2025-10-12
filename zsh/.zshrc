@@ -51,3 +51,7 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Enable syntax highlighting
 source ~/.config/zsh/zsh-syntax-highlighting-catppuccin/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
