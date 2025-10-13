@@ -26,9 +26,6 @@ return {
 					"xml",
 					"diff",
 
-					"java",
-					"kotlin",
-
 					"json",
 					"html",
 					"css",
