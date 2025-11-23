@@ -32,6 +32,11 @@ return {
 					"typescript",
 					"javascript",
 					"tsx",
+
+					"cpp",
+					"c",
+					"cmake",
+					"make",
 				},
 				incremental_selection = {
 					enable = true,

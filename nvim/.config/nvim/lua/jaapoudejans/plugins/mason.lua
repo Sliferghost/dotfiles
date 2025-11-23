@@ -27,6 +27,8 @@ return {
 
 				"ts_ls",
 				"tailwindcss",
+
+				"clangd",
 			},
 		})
 
@@ -35,6 +37,8 @@ return {
 				"stylua",
 
 				"biome",
+
+				"clang-format",
 			},
 		})
 	end,
