@@ -25,8 +25,8 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"gopls",
-				"typescript-language-server",
-				"tailwindcss-language-server",
+				"ts_ls",
+				"tailwindcss",
 				"jsonls",
 			},
 		})
