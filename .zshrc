@@ -130,7 +130,6 @@ alias ls="eza"
 alias l="eza -alh"
 alias tree="eza --tree"
 alias cat="bat"
-alias cd="z"
 
 # git aliases
 alias g="git"
@@ -153,6 +152,28 @@ function fcd() {
   [ -z "$target" ] && return  # Exit if nothing is selected
   [ -f "$target" ] && target=$(dirname "$target")  # Convert file to directory
   cd "$target"
+}
+
+function tesla-unzip() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: tesla-unzip <zipfile>"
+    return 1
+  fi
+
+  local zipfile="$1"
+  if [[ ! -f "$zipfile" ]]; then
+    echo "Error: File '$zipfile' not found"
+    return 1
+  fi
+
+  local tmpdir=$(mktemp -d)
+  unzip -q "$zipfile" -d "$tmpdir"
+
+  local count=$(find "$tmpdir" -type f -name "*.pdf" | wc -l | tr -d ' ')
+  find "$tmpdir" -type f -name "*.pdf" -exec mv {} . \;
+
+  rm -rf "$tmpdir"
+  echo "Extracted $count invoice(s) to current directory"
 }
 
 # bun completions
@@ -193,3 +214,14 @@ source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh
 
 # Ikea
 source "/Users/jaapoudejans/Projects/Ikea/.zshrc"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jaapoudejans/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# Claude Code
+export PATH="$HOME/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
