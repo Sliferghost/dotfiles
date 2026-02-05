@@ -4,4 +4,6 @@ clipse/.config/clipse/tmp_files
 
 tmux/.config/tmux/.tmux/plugins
 
+node_modules/
+
 .zshrc-custom
