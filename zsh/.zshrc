@@ -32,6 +32,7 @@ alias cd="z"
 alias lg="lazygit"
 alias copy-username="lpass show --clip --username -F"
 alias copy-password="lpass show --clip --password -F"
+alias cc="claude"
 
 # Custom functions
 function tesla-unzip() {
