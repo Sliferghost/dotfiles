@@ -33,6 +33,29 @@ alias lg="lazygit"
 alias copy-username="lpass show --clip --username -F"
 alias copy-password="lpass show --clip --password -F"
 
+# Custom functions
+function tesla-unzip() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: tesla-unzip <zipfile>"
+    return 1
+  fi
+
+  local zipfile="$1"
+  if [[ ! -f "$zipfile" ]]; then
+    echo "Error: File '$zipfile' not found"
+    return 1
+  fi
+
+  local tmpdir=$(mktemp -d)
+  unzip -q "$zipfile" -d "$tmpdir"
+
+  local count=$(find "$tmpdir" -type f -name "*.pdf" | wc -l | tr -d ' ')
+  find "$tmpdir" -type f -name "*.pdf" -exec mv {} . \;
+
+  rm -rf "$tmpdir"
+  echo "Extracted $count invoice(s) to current directory"
+}
+
 # Environment
 export EDITOR="nvim"
 
