@@ -1,0 +1,22 @@
+# Main settings
+mode=drun
+width=750
+height=400
+prompt=
+insensitive=true
+always_parse_args=true
+
+# Keys
+key_up=k
+key_down=j
+key_left=h
+key_right=l
+key_expand=Tab
+key_submit=Return
+
+# Appearance
+columns=1
+hide_scroll=true
+
+# Terminal to use
+term=ghostty
