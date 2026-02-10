@@ -34,10 +34,6 @@ alias copy-username="lpass show --clip --username -F"
 alias copy-password="lpass show --clip --password -F"
 alias cc="claude"
 
-if command -v podman &> /dev/null; then
-  alias docker=podman
-fi
-
 # Custom functions
 function tesla-unzip() {
   if [[ -z "$1" ]]; then
