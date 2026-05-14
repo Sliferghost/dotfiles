@@ -86,3 +86,34 @@ export NVM_DIR="$HOME/.nvm"
 
 # UV - Python environment
 [[ -s "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
+
+# bun completions
+[ -s "/Users/jaapoudejans/.bun/_bun" ] && source "/Users/jaapoudejans/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# fnm
+export PATH="/Users/jaapoudejans/.local/share/fnm/node-versions/v24.15.0/installation/bin:$PATH"
+
+# AsyncAPI CLI Autocomplete
+ASYNCAPI_AC_ZSH_SETUP_PATH=/Users/jaapoudejans/Library/Caches/@asyncapi/cli/autocomplete/zsh_setup && test -f $ASYNCAPI_AC_ZSH_SETUP_PATH && source $ASYNCAPI_AC_ZSH_SETUP_PATH; # asyncapi autocomplete setup
+
+# >>> chisel >>>
+# Managed by chisel. Do not edit manually.
+export PATH="/Users/jaapoudejans/.chisel/bin:$PATH"
+export PATH="/Users/jaapoudejans/.chisel/google-cloud-sdk/bin:$PATH"
+export JIRA_CONFIG_FILE="/Users/jaapoudejans/.chisel/jira-config.yml"
+export JIRA_API_TOKEN="$(security find-generic-password -s 'chisel/jira-api-token' -a "$USER" -w 2>/dev/null)"
+export CONFLUENCE_API_TOKEN="$(security find-generic-password -s 'chisel/confluence-api-token' -a "$USER" -w 2>/dev/null)"
+export JF_ACCESS_TOKEN="$(security find-generic-password -s 'chisel/jfrog-access-token' -a "$USER" -w 2>/dev/null)"
+export INTER_CONFLUENCE_API_TOKEN="$(security find-generic-password -s 'chisel/inter-confluence-api-token' -a "$USER" -w 2>/dev/null)"
+command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
+command -v cs &>/dev/null && _cs_jh="$(cs java-home --jvm temurin:21 2>/dev/null)" && [ -n "$_cs_jh" ] && export JAVA_HOME="$_cs_jh"
+copilot() {
+  chisel skills sync --if-stale 24h >/dev/null 2>&1 || true
+  command copilot "$@"
+}
+# <<< chisel <<<
