@@ -268,6 +268,11 @@ if.app-id = 'com.jetbrains.clion'
 if.app-id = 'com.microsoft.VSCode'
     run = 'move-node-to-workspace I'
 
+# T3 Code
+[[on-window-detected]]
+if.app-id = 'com.t3tools.t3code'
+    run = 'move-node-to-workspace I'
+
 # Cursor
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
