@@ -2,25 +2,52 @@ vim.keymap.set("n", "grd", vim.lsp.buf.definition, { desc = "Go To Definition" }
 
 -- Lua Language Server --
 vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-            workspace = {
-                checkThirdParty = false,
-                library = {
-                    vim.env.VIMRUNTIME,
-                    "${3rd}/luv/library",
-                },
-            },
-        },
-    },
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+					"${3rd}/luv/library",
+				},
+			},
+		},
+	},
+})
+vim.lsp.config("ts_ls", {
+	filetypes = {
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+	},
+	root_markers = {
+		"package.json",
+		"tsconfig.json",
+		"jsconfig.json",
+		".git",
+	},
+})
+vim.lsp.config("eslint", {
+	root_markers = {
+		"eslint.config.js",
+		"eslint.config.mjs",
+		".eslintrc",
+		".eslintrc.js",
+		".eslintrc.json",
+		"package.json",
+	},
 })
 
 -- Mason --
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls" },
-    automatic_enable = true
+	ensure_installed = { "lua_ls", "ts_ls", "eslint" },
+	automatic_enable = true,
+})
+require("mason-tool-installer").setup({
+	ensure_installed = { "prettierd" },
 })

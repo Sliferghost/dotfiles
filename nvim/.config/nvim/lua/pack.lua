@@ -4,11 +4,13 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.nvim",
 	"https://github.com/MunifTanjim/nui.nvim",
 	"https://github.com/folke/noice.nvim",
+	"https://github.com/rcarriga/nvim-notify",
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/romus204/tree-sitter-manager.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mason-org/mason-lspconfig.nvim",
+	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
 	"https://github.com/nvim-lualine/lualine.nvim",
 	"https://github.com/windwp/nvim-autopairs",
 	"https://github.com/windwp/nvim-ts-autotag",
@@ -47,7 +49,8 @@ vim.keymap.set("n", "<leader>ef", function()
 	MiniFiles.reveal_cwd()
 end, { desc = "Toggle into currently opened file" })
 
---- Noice ---
+--- Noice & Notify ---
+require("notify").setup({})
 require("noice").setup({
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -132,6 +135,16 @@ local conform = require("conform")
 conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
+		javascript = { "prettierd" },
+		javascriptreact = { "prettierd" },
+		typescript = { "prettierd" },
+		typescriptreact = { "prettierd" },
+
+		json = { "prettierd" },
+		jsonc = { "prettierd" },
+		css = { "prettierd" },
+		scss = { "prettierd" },
+		html = { "prettierd" },
 	},
 	format_on_save = {
 		timeout_ms = 500,
