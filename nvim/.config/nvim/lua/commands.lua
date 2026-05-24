@@ -5,3 +5,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+-- This will check if files are externally changed when Neovim is focussed again or we switch to a different buffer
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+	group = vim.api.nvim_create_augroup("AutoReloadFile", { clear = true }),
+	command = "checktime",
+})
