@@ -79,11 +79,6 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/zsh-syntax-highlighting-catppuccin/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# NVM - Node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # UV - Python environment
 [[ -s "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
 
@@ -96,7 +91,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 
 # fnm
-export PATH="/Users/jaapoudejans/.local/share/fnm/node-versions/v24.15.0/installation/bin:$PATH"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # AsyncAPI CLI Autocomplete
 ASYNCAPI_AC_ZSH_SETUP_PATH=/Users/jaapoudejans/Library/Caches/@asyncapi/cli/autocomplete/zsh_setup && test -f $ASYNCAPI_AC_ZSH_SETUP_PATH && source $ASYNCAPI_AC_ZSH_SETUP_PATH; # asyncapi autocomplete setup
