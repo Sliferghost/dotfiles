@@ -170,8 +170,6 @@ require("lualine").setup({
 		lualine_b = { branch },
 		lualine_c = { "filename" },
 		lualine_x = {
-			-- { "encoding",},
-			-- { "fileformat" },
 			{ "filetype" },
 		},
 	},
