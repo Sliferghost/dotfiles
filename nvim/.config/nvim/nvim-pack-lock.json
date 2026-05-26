@@ -71,6 +71,10 @@
     "tree-sitter-manager.nvim": {
       "rev": "748c741589db9061524f082412cc8308f7b7cbd7",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
+    },
+    "vim-tmux-navigator": {
+      "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",
+      "src": "https://github.com/christoomey/vim-tmux-navigator"
     }
   }
 }

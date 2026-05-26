@@ -17,6 +17,7 @@ vim.pack.add({
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 	"https://github.com/folke/todo-comments.nvim",
 	"https://github.com/kdheepak/lazygit.nvim",
+	"https://github.com/christoomey/vim-tmux-navigator",
 })
 
 -- theme --
@@ -135,6 +136,7 @@ local conform = require("conform")
 conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
+
 		javascript = { "prettierd" },
 		javascriptreact = { "prettierd" },
 		typescript = { "prettierd" },
@@ -145,6 +147,8 @@ conform.setup({
 		css = { "prettierd" },
 		scss = { "prettierd" },
 		html = { "prettierd" },
+
+		rust = { "rustfmt" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

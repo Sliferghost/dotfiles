@@ -17,6 +17,8 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
+
+-- Web development --
 vim.lsp.config("ts_ls", {
 	filetypes = {
 		"javascript",
@@ -42,10 +44,24 @@ vim.lsp.config("eslint", {
 	},
 })
 
+-- Rust --
+vim.lsp.config("rust_analyzer", {
+	settings = {
+		["rust-analyzer"] = {
+			cargo = {
+				allFeatures = true,
+			},
+			check = {
+				command = "clippy",
+			},
+		},
+	},
+})
+
 -- Mason --
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "ts_ls", "eslint" },
+	ensure_installed = { "lua_ls", "ts_ls", "eslint", "rust_analyzer" },
 	automatic_enable = true,
 })
 require("mason-tool-installer").setup({
