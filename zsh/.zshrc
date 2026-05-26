@@ -89,10 +89,6 @@ source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-
-# fnm
-eval "$(fnm env --use-on-cd --shell zsh)"
-
 # AsyncAPI CLI Autocomplete
 ASYNCAPI_AC_ZSH_SETUP_PATH=/Users/jaapoudejans/Library/Caches/@asyncapi/cli/autocomplete/zsh_setup && test -f $ASYNCAPI_AC_ZSH_SETUP_PATH && source $ASYNCAPI_AC_ZSH_SETUP_PATH; # asyncapi autocomplete setup
 
@@ -112,3 +108,6 @@ copilot() {
   command copilot "$@"
 }
 # <<< chisel <<<
+
+# fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
