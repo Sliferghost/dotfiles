@@ -287,6 +287,11 @@ if.app-id = 'com.todesktop.230313mzl4w4u92'
 if.app-id = 'com.openai.codex'
     run = 'move-node-to-workspace I'
 
+# GitHub Copilot
+[[on-window-detected]]
+if.app-id = 'com.github.githubapp'
+    run = 'move-node-to-workspace I'
+
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
     run = 'move-node-to-workspace O'
