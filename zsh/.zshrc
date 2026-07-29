@@ -56,6 +56,41 @@ function tesla-unzip() {
   echo "Extracted $count invoice(s) to current directory"
 }
 
+# Prune local branches whose upstream remote branch was deleted (e.g. after PR merge)
+git-prune-branches() {
+  # Ensure we're inside a git repository
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "Not a git repository." >&2
+    return 1
+  fi
+
+  # Update remote tracking refs and drop stale ones
+  git fetch --prune
+
+  local current gone
+  current=$(git branch --show-current)
+
+  # Local branches whose tracked upstream is gone, excluding the current branch
+  gone=$(git branch -vv | grep ': gone]' | awk '{print $1}' | grep -vx "$current")
+
+  if [[ -z "$gone" ]]; then
+    echo "No stale branches to clean up."
+    return 0
+  fi
+
+  echo "The following stale branches will be deleted:"
+  echo "$gone" | sed 's/^/  /'
+
+  # Confirm before deleting (skip prompt with -y/--yes)
+  if [[ "$1" != "-y" && "$1" != "--yes" ]]; then
+    echo -n "Delete these branches? [y/N] "
+    read -r reply
+    [[ "$reply" == [yY] ]] || { echo "Aborted."; return 0; }
+  fi
+
+  echo "$gone" | xargs git branch -D
+}
+
 # Environment
 export EDITOR="nvim"
 
@@ -96,18 +131,29 @@ ASYNCAPI_AC_ZSH_SETUP_PATH=/Users/jaapoudejans/Library/Caches/@asyncapi/cli/auto
 # Managed by chisel. Do not edit manually.
 export PATH="/Users/jaapoudejans/.chisel/bin:$PATH"
 export PATH="/Users/jaapoudejans/.chisel/google-cloud-sdk/bin:$PATH"
-export JIRA_CONFIG_FILE="/Users/jaapoudejans/.chisel/jira-config.yml"
+export CLOUDSDK_PYTHON="/Users/jaapoudejans/.chisel/gcloud-python"
 export JIRA_API_TOKEN="$(security find-generic-password -s 'chisel/jira-api-token' -a "$USER" -w 2>/dev/null)"
 export CONFLUENCE_API_TOKEN="$(security find-generic-password -s 'chisel/confluence-api-token' -a "$USER" -w 2>/dev/null)"
 export JF_ACCESS_TOKEN="$(security find-generic-password -s 'chisel/jfrog-access-token' -a "$USER" -w 2>/dev/null)"
 export INTER_CONFLUENCE_API_TOKEN="$(security find-generic-password -s 'chisel/inter-confluence-api-token' -a "$USER" -w 2>/dev/null)"
 command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
-command -v cs &>/dev/null && _cs_jh="$(cs java-home --jvm temurin:21 2>/dev/null)" && [ -n "$_cs_jh" ] && export JAVA_HOME="$_cs_jh"
+command -v cs &>/dev/null && _cs_jh="$(cs java-home --jvm temurin:25 2>/dev/null)" && [ -n "$_cs_jh" ] && export JAVA_HOME="$_cs_jh"
 copilot() {
-  chisel skills sync --if-stale 24h >/dev/null 2>&1 || true
-  command copilot "$@"
+  if [ "${COPILOT_NO_MEMORIES+x}" ]; then
+    command copilot "$@"
+  else
+    COPILOT_CUSTOM_INSTRUCTIONS_DIRS="/Users/jaapoudejans/.chisel/memories/inbound" command copilot "$@"
+  fi
 }
 # <<< chisel <<<
+
+# Docker & Colima
+alias colima-start="colima start --cpu 4 --memory 8 --network-address"
+if command -v colima >/dev/null && colima status >/dev/null 2>&1; then
+  export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+  export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="/var/run/docker.sock"
+  export TESTCONTAINERS_HOST_OVERRIDE="$(colima ls -j | jq -r '.address')"
+fi
 
 # fnm
 eval "$(fnm env --use-on-cd --shell zsh)"
