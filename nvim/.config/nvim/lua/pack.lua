@@ -98,6 +98,23 @@ local MiniExtra = require("mini.extra")
 MiniPick.setup()
 MiniExtra.setup()
 
+local todo_pattern = [[\b(FIX|FIXME|BUG|FIXIT|ISSUE|TODO|HACK|WARN|WARNING|PERF|NOTE|TEST):]]
+
+MiniPick.registry.todos = function(local_opts)
+	local cwd = local_opts.cwd or vim.fn.getcwd()
+
+	return MiniPick.builtin.grep({
+		tool = "rg",
+		pattern = todo_pattern,
+		method = "regex",
+	}, {
+		source = {
+			name = "Todo comments",
+			cwd = cwd,
+		},
+	})
+end
+
 vim.keymap.set("n", "<leader>pf", function()
 	MiniPick.builtin.files()
 end, { desc = "Pick file" })
@@ -108,6 +125,9 @@ vim.keymap.set("n", "<leader>ph", function()
 	MiniPick.builtin.help()
 end, { desc = "Pick help" })
 
+vim.keymap.set("n", "<leader>pt", function()
+	MiniPick.registry.todos({})
+end, { desc = "Search todo comments" })
 vim.keymap.set("n", "<leader>pd", function()
 	MiniExtra.pickers.diagnostic()
 end, { desc = "Pick diagnostics" })
